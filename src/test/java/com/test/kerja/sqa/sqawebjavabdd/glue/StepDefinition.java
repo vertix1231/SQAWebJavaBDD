@@ -30,8 +30,8 @@ import com.test.kerja.sqa.sqawebjavabdd.driver.DriverSingleton;
 import com.test.kerja.sqa.sqawebjavabdd.scenariopage.KerjaOneScenarioPage;
 import com.test.kerja.sqa.sqawebjavabdd.utils.ConfigurationProperties;
 import com.test.kerja.sqa.sqawebjavabdd.utils.ConstantsDriver;
-import com.test.kerja.sqa.sqawebjavabdd.utils.TestCase;
-import com.test.kerja.sqa.sqawebjavabdd.utils.Utils;
+import com.test.kerja.sqa.sqawebjavabdd.utils.TestCases;
+import com.test.kerja.sqa.sqawebjavabdd.utils.UtilsTest;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -68,9 +68,9 @@ public class StepDefinition {
 		kerjaOneScenarioPage = new KerjaOneScenarioPage();
 
 		extentReports.attachReporter(htmlreporter);
-		TestCase[] tests = TestCase.values();
-		extentTest = extentReports.createTest(tests[Utils.testcount].getTestNama());
-		Utils.testcount++;
+		TestCases[] tests = TestCases.values();
+		extentTest = extentReports.createTest(tests[UtilsTest.testcount].getTestName());
+		UtilsTest.testcount++;
 	}
 
 //---------------------------------------------------------------------------------------------------------------------
