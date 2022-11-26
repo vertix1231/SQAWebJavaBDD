@@ -1,0 +1,23 @@
+ASSERT VALUE
+
+assertTrue(actualText.contains(expectedString));
+assertFalse(actualText.contains(expectedString));
+
+EXTENT TEST EVIDENCE
+
+private ExtentTest extentTest;
+static ExtentReports extentReports = new ExtentReports();
+static ExtentSparkReporter htmlreporter = new ExtentSparkReporter("src/test/resources/reporttest_testkerja.html");
+	
+	
+LOG PASS EXTEEND TEST:
+extentTest.log(Status.PASS, "enter dashboard page");
+
+LOG FAIL EXTEEND TEST:
+extentTest.log(Status.FAIL, "enter dashboard page");
+
+EVIDENCE SCREENSHOOT FAIL:
+extentTest.fail("succesfully enter dashboard page",MediaEntityBuilder.createScreenCaptureFromPath(captureScreen()).build());
+
+EVIDENCE SCREENSHOOT PASS:
+extentTest.pass("succesfully enter dashboard page",MediaEntityBuilder.createScreenCaptureFromPath(captureScreen()).build());

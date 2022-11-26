@@ -1,0 +1,17 @@
+	@FindBy(css = "#mainMenuFirstLevelUnorderedList > li")
+	private List<WebElement> btnMenu; 
+	
+	@FindBy(css = "#mainMenuFirstLevelUnorderedList > li.current.main-menu-first-level-list-item > ul > li")
+	private List<WebElement> lstMenuAdmin;
+	
+	@FindBy(id = "btnAdd")
+	private WebElement btnAdd;
+	
+	@FindBy(id = "nasionality_name")
+	private WebElement txtNasionalityName;
+	
+	@FindBy(id = "btnSave")
+	private WebElement btnSave;
+	
+	@FindBy(xpath = "//div[@class='message success fadable']")
+	private WebElement txtMessageSuccess;

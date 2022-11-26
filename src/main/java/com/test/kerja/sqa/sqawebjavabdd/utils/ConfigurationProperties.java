@@ -3,7 +3,6 @@ package com.test.kerja.sqa.sqawebjavabdd.utils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-
 import lombok.Getter;
 
 @Getter
@@ -14,4 +13,6 @@ public class ConfigurationProperties {
 	private String browser;
 	@Value("${expectedtext}")
 	private String expectedtext;
+	@Value("${dashboardexpectedtext}")
+	private String dashboardexpectedtext;
 }

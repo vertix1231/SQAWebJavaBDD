@@ -1,0 +1,26 @@
+//CAPTURE PHOTO TESTING
+	public static String captureScreen() throws IOException {
+		TakesScreenshot screen = (TakesScreenshot) driver;
+		File src = screen.getScreenshotAs(OutputType.FILE);
+		String dest = "D:\\ChromeDriver\\buktihasiltesting\\" + getcurrentdateandtime() + ".png";
+		File target = new File(dest);
+		FileUtils.copyFile(src, target);
+		return dest;
+	}
+
+	public static String getcurrentdateandtime() {
+		String str = null;
+		try {
+			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss:SSS");
+			Date date = new Date();
+			str = dateFormat.format(date);
+			str = str.replace(" ", "-").replaceAll("/", "").replaceAll(":", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return str;
+	}
+	
+src/test/resources/failevidence/
+D:\\ChromeDriver\\buktihasiltesting\\
+C:\Users\ACER\Desktop\JCCODING\sqa\com.test.kerja.sqa.sqawebjavabdd\src\test\resources\failevidence\

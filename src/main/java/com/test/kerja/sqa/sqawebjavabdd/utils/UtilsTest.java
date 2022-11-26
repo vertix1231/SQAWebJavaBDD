@@ -1,5 +1,5 @@
 package com.test.kerja.sqa.sqawebjavabdd.utils;
 
 public class UtilsTest {
-	public static int testcount=0;
+	public static int scenariotestcount=0;
 }

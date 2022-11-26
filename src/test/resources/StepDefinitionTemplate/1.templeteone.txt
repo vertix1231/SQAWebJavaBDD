@@ -1,0 +1,71 @@
+	@Autowired
+	ConfigurationProperties configurationProperties;
+
+	@Before
+	public void initializeObject() {
+		DriverSingleton.getInstance(configurationProperties.getBrowser());
+
+		kerjaOneScenarioPage = new KerjaOneScenarioPage();
+		loginPage = new LoginPage();
+
+		extentReports.attachReporter(htmlreporter);
+		ScenarioTestCases[] tests = ScenarioTestCases.values();
+		extentTest = extentReports.createTest(tests[UtilsTest.scenariotestcount].getTestName());
+		UtilsTest.scenariotestcount++;
+	}
+-------------------------------------------------------------------------------------
+	@Given("^Go to Main web Login")
+	public void kerjaOne() {
+
+		driver = DriverSingleton.getDriver();
+		driver.get(ConstantsDriver.URL_MAIN_WEB);
+		extentTest.log(Status.PASS, "Navigation to : " + ConstantsDriver.URL_MAIN_WEB);
+
+	}
+	
+----------------------------------------------------------------------------------------
+@When("^Click on search button")
+	public void kerjaTwo() {
+		loginPage.goToSignin("Admin", "admin123");
+//		kerjaOneScenarioPage.clickSearch();
+//		if (Status.PASS != null) {
+//			System.out.println("scenario Click on search button passed");
+//			extentTest.log(Status.PASS, "Click on search button");
+//
+//		} else {
+//			System.out.println("scenario Click on search button fail");
+//			extentTest.log(Status.FAIL, "Click on search button");
+//			try {
+//				extentTest.fail("Click on search button",
+//						MediaEntityBuilder.createScreenCaptureFromPath(captureScreen()).build());
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//
+//		}
+---------------------------------------------------------------------------------------------
+	@And("^Input customer solution")
+	public void kerjaThree() {
+//		kerjaOneScenarioPage.inputArticleTitle(configurationProperties.getExpectedtext());
+//		if (Status.PASS != null) {
+//			System.out.println("scenario Input “customer solution” passed");
+//			extentTest.log(Status.PASS, "Input “customer solution”");
+//
+//		} else {
+//			System.out.println("scenario Input “customer solution” fail");
+//			extentTest.log(Status.FAIL, "Input “customer solution”");
+//			try {
+//				extentTest.fail("Input “customer solution”",
+//						MediaEntityBuilder.createScreenCaptureFromPath(captureScreen()).build());
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+	}
+----------------------------------------------------------------------------------
+	@After
+	public void closeObject() {
+		extentReports.flush();
+	}

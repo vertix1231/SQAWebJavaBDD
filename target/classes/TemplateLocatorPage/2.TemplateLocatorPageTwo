@@ -1,0 +1,101 @@
+
+
+// scroll via javascript
+JavascriptExecutor js = (JavascriptExecutor)driver;
+js.executeScript("window.scrollBy(0,1000)");
+
+// isi form
+firstName.sendKeys(firstNameinput);
+
+// click array button
+gendernol.get(0).click();
+
+// scroll down menu
+public void lsstate(int selection) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)");
+
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(liststate));
+
+		liststate.click();
+
+		this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		List<Keys> lstSequence = new ArrayList<Keys>();
+		for (int i = 0; i < selection; i++) {
+			lstSequence.add(Keys.DOWN);
+		}
+		lstSequence.add(Keys.ENTER);
+		CharSequence[] cs = lstSequence.toArray(new CharSequence[lstSequence.size()]);
+		Actions keyDown = new Actions(driver);
+		keyDown.sendKeys(Keys.chord(cs)).perform();
+
+	}
+
+
+// wait element to be clicked
+WebDriverWait wait = new WebDriverWait(driver,30);
+wait.until(ExpectedConditions.elementToBeClickable(txtBOD));
+
+
+// radio button
+for (int i = 0; i < gender.size(); i++) {
+			gender.get(i).click();
+		}
+
+// drag drop element
+@FindBy(css="#draggable")
+	private WebElement dragable;
+	
+	@FindBy(css="#droppable")
+	private WebElement dropable;
+	
+	public void DraggableDroppable() {
+		Actions drandrop = new Actions(driver);
+		drandrop.dragAndDrop(dragable, dropable).build().perform();
+		
+	}
+
+// wait driver web
+WebDriverWait wait = new WebDriverWait(driver, 50);
+wait.until(ExpectedConditions.elementToBeClickable(liststate));
+
+
+//UPLOAD FILE(input type="file")
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript("arguments[0].scrollIntoView();", btnupload);
+btnupload.sendKeys("C:\\Users\\User\\Pictures\\1_DSC_0041_1 (2).JPG");
+
+
+driver.switchTo().frame("Frame id");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+driver.findElement(By.linkText("Add a New Credit Card")).click();
+driver.findElement(By.xpath("//a[@onclick='showDetail()']")).click();
+
+
+selenium jas onclick
+
+
+
+
+
+
+
+
+Alert alert = driver.switchTo().alert();
+alert.accept();
