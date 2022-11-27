@@ -65,7 +65,7 @@ public class StepDefinition {
 //---------------------------------------------------------------------------------------------------------------------
 
 	@Given("^Go to Main web Login")
-	public void workOne() throws IOException {
+	public void workZero() throws IOException {
 		driver.get(ConstantsParam.URL_MAIN_WEB);
 		if(loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
 			extentTest.log(Status.PASS, "Navigation to : " + ConstantsParam.URL_MAIN_WEB);
@@ -77,7 +77,7 @@ public class StepDefinition {
 	}
 
 	@When("^input user and password to login to web")
-	public void workTwo() throws IOException {
+	public void workOne() throws IOException {
 		if (loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
 			loginPage.goToSignin("Admin", "admin123");
 			System.out.println("input user and password to login to web pass");
@@ -93,7 +93,7 @@ public class StepDefinition {
 	}
 
 	@Then("^enter dashboard page")
-	public void workThree() throws IOException {
+	public void workTwo() throws IOException {
 		if (loginPage.getTvdashboard().contains(configurationProperties.getDashboardexpectedtext())) {
 			System.out.println("scenario enter dashboard page pass");
 			extentTest.log(Status.PASS, "enter dashboard page pass");
@@ -106,7 +106,7 @@ public class StepDefinition {
 	}
 
 	@Given("^Click admin menu")
-	public void workFour() throws IOException {
+	public void workThree() throws IOException {
 		adminPage.goToAdmin();
 		if(adminPage.getTxtAdmiTabHighlight().contains(configurationProperties.getAdmintabadminmenu())) {
 			System.out.println("scenario Click admin menu pass");
