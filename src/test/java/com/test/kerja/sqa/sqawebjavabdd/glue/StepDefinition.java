@@ -65,31 +65,28 @@ public class StepDefinition {
 //---------------------------------------------------------------------------------------------------------------------
 
 	@Given("^Go to Main web Login")
-	public void workOne() {
+	public void workOne() throws IOException {
 		driver.get(ConstantsParam.URL_MAIN_WEB);
-		if(Status.PASS != null) {
+		if(loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
 			extentTest.log(Status.PASS, "Navigation to : " + ConstantsParam.URL_MAIN_WEB);
-		}else if(Status.FAIL != null){
-			extentTest.log(Status.FAIL, "Navigation to : " + ConstantsParam.URL_MAIN_WEB);
+		}else{
+			extentTest.fail("Navigation to : " + ConstantsParam.URL_MAIN_WEB,
+					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
 		}
 		
 	}
 
 	@When("^input user and password to login to web")
-	public void workTwo() {
-		loginPage.goToSignin("Admin", "admin123");
-		if (Status.PASS != null) {
+	public void workTwo() throws IOException {
+		if (loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
+			loginPage.goToSignin("Admin", "admin123");
 			System.out.println("input user and password to login to web pass");
-			extentTest.log(Status.PASS, "input user and password to login to web pass");
+			extentTest.log(Status.PASS, "input user and password to login to web");
 
 		} else {
 			System.out.println("input user and password to login to web fail");
-			try {
-				extentTest.fail("input user and password to login to web fail",
-						MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			extentTest.fail("input user and password to login to web",
+					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
 
 		}
 
@@ -109,12 +106,15 @@ public class StepDefinition {
 	}
 
 	@Given("^Click admin menu")
-	public void workFour() {
+	public void workFour() throws IOException {
 		adminPage.goToAdmin();
-		if(Status.PASS != null) {
+		if(adminPage.getTxtAdmiTabHighlight().contains(configurationProperties.getAdmintabadminmenu())) {
+			System.out.println("scenario Click admin menu pass");
 			extentTest.log(Status.PASS, "Click admin menu");
-		}else if(Status.FAIL != null){
-			extentTest.log(Status.FAIL, "Click admin menu");
+		}else{
+			System.out.println("scenario Click admin menu fail");
+			extentTest.fail("Click admin menu",
+					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
 		}
 
 	}

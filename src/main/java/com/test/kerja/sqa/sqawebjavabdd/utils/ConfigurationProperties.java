@@ -15,4 +15,8 @@ public class ConfigurationProperties {
 	private String expectedtext;
 	@Value("${dashboardexpectedtext}")
 	private String dashboardexpectedtext;
+	@Value("${loginhighlightexpected}")
+	private String loginhighlightexpected;
+	@Value("${admintabadminmenu}")
+	private String admintabadminmenu;
 }

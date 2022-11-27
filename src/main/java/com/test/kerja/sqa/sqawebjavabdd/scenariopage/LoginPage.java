@@ -17,6 +17,11 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(css = "#app > div.orangehrm-login-layout > div > div.orangehrm-login-container > div > div.orangehrm-login-slot > h5")
+	private WebElement txtLoginHighlight;
+
+	
+	
 	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")
 	private WebElement txtUsername;
 
@@ -31,6 +36,9 @@ public class LoginPage {
 
 	public String getTvdashboard() {
 		return tvdashboard.getText();
+	}
+	public String getTxtLoginHighlight() {
+		return txtLoginHighlight.getText();
 	}
 
 	public void goToSignin(String email, String password) {
