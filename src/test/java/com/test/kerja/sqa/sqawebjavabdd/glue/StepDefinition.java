@@ -116,7 +116,6 @@ public class StepDefinition {
 			extentTest.fail("Click admin menu",
 					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
 		}
-
 	}
 
 	@After
@@ -125,7 +124,7 @@ public class StepDefinition {
 	}
 
 //CAPTURE PHOTO TESTING
-	public static String failcaptureScreen() throws IOException {
+	public String failcaptureScreen() throws IOException {
 		TakesScreenshot screen = (TakesScreenshot) driver;
 		File src = screen.getScreenshotAs(OutputType.FILE);
 		String dest = "C:\\Users\\ACER\\Desktop\\JCCODING\\sqa\\com.test.kerja.sqa.sqawebjavabdd\\src\\test\\resources\\failevidence\\"
@@ -135,7 +134,7 @@ public class StepDefinition {
 		return dest;
 	}
 
-	public static String getcurrentdateandtime() {
+	public String getcurrentdateandtime() {
 		String str = null;
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss:SSS");
