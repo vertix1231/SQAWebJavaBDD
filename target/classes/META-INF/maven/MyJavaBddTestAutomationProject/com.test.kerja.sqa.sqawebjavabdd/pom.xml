@@ -6,7 +6,7 @@
 	<name>MyJavaBddTestAutomationProject</name>
 	<description>MyJavaBddTestAutomationProject</description>
 	<dependencies>
-<!-- phase 1 junit and selenium -->
+		<!-- phase 1 junit and selenium -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -20,7 +20,7 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.1.1</version>
 		</dependency>
-<!-- phase 2 cucumber part 1 -->	
+		<!-- phase 2 cucumber part 1 -->
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -34,7 +34,7 @@
 			<version>7.1.0</version>
 			<scope>test</scope>
 		</dependency>
-<!-- phase 2 cucumber part 2 -->	
+		<!-- phase 2 cucumber part 2 -->
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -48,8 +48,8 @@
 			<artifactId>cucumber-spring</artifactId>
 			<version>7.1.0</version>
 		</dependency>
-		
-<!-- phase 3 spring depedency -->
+
+		<!-- phase 3 spring depedency -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -75,7 +75,7 @@
 			<artifactId>spring-aop</artifactId>
 			<version>5.3.14</version>
 		</dependency>
-<!-- phase 4 aventstack report bdd visual -->
+		<!-- phase 4 aventstack report bdd visual -->
 		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
@@ -83,13 +83,18 @@
 			<version>5.0.9</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-<!-- extra phase 5 create file common io -->
+		<!-- extra phase 5 create file common io and lombok -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
-	
 </project>
