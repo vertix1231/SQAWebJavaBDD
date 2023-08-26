@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.test.kerja.sqa.sqawebjavabdd")
 public class AutomationFrameworkConfiguration {
 	public AutomationFrameworkConfiguration() {
-		
+
 	}
 }

@@ -1,6 +1,5 @@
 package com.test.kerja.sqa.sqawebjavabdd.scenariopage;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -37,15 +36,14 @@ public class LoginPage {
 	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[1]/span/h6")
 	@CacheLookup
 	private WebElement tvdashboard;
-	
+
 	public String getTxtLoginHighlight() {
-	return txtLoginHighlight.getText();
-}
+		return txtLoginHighlight.getText();
+	}
 
 	public String getTvdashboard() {
 		return tvdashboard.getText();
 	}
-	
 
 	public void goToSignin(String email, String password) {
 //		JavascriptExecutor jse = (JavascriptExecutor) driver;

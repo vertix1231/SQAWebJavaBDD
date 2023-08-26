@@ -98,9 +98,9 @@ public class StepDefinition {
 			e.printStackTrace();
 		}
 		loginPage.goToSignin(username, pass);
-		System.out.println("input "+username+" and "+pass+" to login to web pass");
-		extentTest.log(Status.PASS, "input "+username+" and "+pass+" to login to web pass");
-		extentTest.pass("input "+username+" and "+pass+" to login to web pass",
+		System.out.println("input " + username + " and " + pass + " to login to web pass");
+		extentTest.log(Status.PASS, "input " + username + " and " + pass + " to login to web pass");
+		extentTest.pass("input " + username + " and " + pass + " to login to web pass",
 				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
 	}
 
@@ -148,7 +148,7 @@ public class StepDefinition {
 		System.out.println("Scenario Click Add to Chart One of Products in Dashboard Product pass");
 		extentTest.log(Status.PASS, "Click Add to Chart One of Products in Dashboard Product");
 	}
-	
+
 	@When("^Click Add to Chart All of Products in Dashboard Product")
 	public void workEleven() throws IOException {
 //		dashboardPage.selectProducttoBuy(2);
@@ -175,7 +175,6 @@ public class StepDefinition {
 		extentTest.log(Status.PASS, "Click Checkout Shoping Cart");
 		extentTest.pass("Click Checkout Shoping Cart",
 				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
-		
 
 	}
 
@@ -198,7 +197,7 @@ public class StepDefinition {
 				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
 
 	}
-	
+
 	@Then("^Succesfuly Buy Product")
 	public void workNine() throws IOException {
 		System.out.println("Scenario Succesfuly Buy Product pass");
@@ -207,6 +206,7 @@ public class StepDefinition {
 				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
 
 	}
+
 	@Then("^Back Home Dashboard")
 	public void workTen() throws IOException {
 		dashboardPage.backhomedashboard();
@@ -234,7 +234,7 @@ public class StepDefinition {
 		FileUtils.copyFile(src, target);
 		return dest;
 	}
-	
+
 	public String passcaptureScreen() throws IOException {
 		TakesScreenshot screen = (TakesScreenshot) driver;
 		File src = screen.getScreenshotAs(OutputType.FILE);
