@@ -46,17 +46,8 @@ public class LoginPage {
 	}
 
 	public void goToSignin(String email, String password) {
-//		JavascriptExecutor jse = (JavascriptExecutor) driver;
-//		jse.executeScript("window.scrollBy(0,100)");
 		txtUsername.sendKeys(email);
 		txtPassword.sendKeys(password);
 		btnSignin.click();
 	}
-
-//
-//	public String getTxtLoginHighlight() {
-//		JavascriptExecutor jse = (JavascriptExecutor) driver;
-//		String title = jse.executeScript("document.getElementsByClassName('login_logo');").toString();
-//		return title;
-//	}
 }
