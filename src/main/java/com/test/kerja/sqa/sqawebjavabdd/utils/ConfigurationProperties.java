@@ -11,12 +11,12 @@ import lombok.Getter;
 public class ConfigurationProperties {
 	@Value("${browser}")
 	private String browser;
-	@Value("${expectedtext}")
-	private String expectedtext;
-	@Value("${dashboardexpectedtext}")
-	private String dashboardexpectedtext;
 	@Value("${loginhighlightexpected}")
 	private String loginhighlightexpected;
-	@Value("${admintabadminmenu}")
-	private String admintabadminmenu;
+	@Value("${username}")
+	private String username;
+	@Value("${password}")
+	private String password;
+	@Value("${dashboardproducttext}")
+	private String dashboardproducttext;
 }

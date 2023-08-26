@@ -1,8 +1,9 @@
 package com.test.kerja.sqa.sqawebjavabdd.utils;
 
 public enum ScenarioTestCases {
-	SCT1("Scenario Input Username and Password Login to main web"),
-	SCT2("Scenario Add data from admin menu");
+	SCT1("Scenario Input Username and Password Login to Main Web"),
+	SCT2("Scenario Buy Product"),
+	SCT3("Scenario Buy All Product");
 	
 	private String scenarioTestName;
 

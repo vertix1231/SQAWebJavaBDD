@@ -7,9 +7,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class Chrome implements DriverStrategy {
 
 	public WebDriver setStrategy() {
-		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "D:/ChromeDriver/chromedriver.exe");
+		String projectPath = System.getProperty("user.dir");
+		System.setProperty("webdriver.chrome.driver",projectPath+ "/src/test/resources/drivers/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
 		options.setExperimentalOption("useAutomationExtension", false); //keluarkan sebagian fungsi yang tidak standar pada automation,kalau true semua
 		options.addArguments("--no-sandbox");
 

@@ -6,8 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class FireFox implements DriverStrategy {
 
 	public WebDriver setStrategy() {
-		// TODO Auto-generated method stub
-		System.setProperty("webdriver.geckodriver.driver", "D:/firefox/geckodriver.exe");
+		String projectPath = System.getProperty("user.dir");
+		System.setProperty("webdriver.geckodriver.driver",projectPath+ "/src/test/resources/drivers/geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}

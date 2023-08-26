@@ -1,5 +1,10 @@
 Feature: Login
-  Scenario: Scenario Input Username and Password Login to main web
-  	Given Go to Main web Login
-  	When input user and password to login to web
-  	Then enter dashboard page
+
+  Scenario Outline: Scenario Input Username and Password Login to Main Web
+    Given Navigation to : Main Web Login
+    When input username <Username> and password <Password> to login to web
+    Then enter dashboard page
+
+    Examples: 
+      | Username      | Password     |
+      | standard_user | secret_sauce |

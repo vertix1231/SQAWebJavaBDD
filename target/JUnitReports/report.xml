@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="23.152">
+    <testcase classname="Login" name="Scenario Input Username and Password Login to Main Web" time="18.616">
+        <system-out>
+            <![CDATA[Given Navigation to : Main Web Login........................................passed
+When input username standard_user and password secret_sauce to login to web.passed
+Then enter dashboard page...................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Dashboard Product" name="Scenario Buy Product" time="1.914">
+        <system-out>
+            <![CDATA[Given In the dashboard page.................................................passed
+When Click Add to Chart One of Products in Dashboard Product................passed
+When Click Shopping Cart Icon with Number at The Right Top Corner...........passed
+When Click Checkout Shoping Cart............................................passed
+When Input Form ID to Continue Checkout.....................................passed
+When Confirm to Finish Checkout.............................................passed
+Then Succesfuly Buy Product.................................................passed
+Then Back Home Dashboard....................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Dashboard Product" name="Scenario Buy All Product" time="1.974">
+        <system-out>
+            <![CDATA[Given In the dashboard page.................................................passed
+When Click Add to Chart All of Products in Dashboard Product................passed
+When Click Shopping Cart Icon with Number at The Right Top Corner...........passed
+When Click Checkout Shoping Cart............................................passed
+When Input Form ID to Continue Checkout.....................................passed
+When Confirm to Finish Checkout.............................................passed
+Then Succesfuly Buy Product.................................................passed
+Then Back Home Dashboard....................................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

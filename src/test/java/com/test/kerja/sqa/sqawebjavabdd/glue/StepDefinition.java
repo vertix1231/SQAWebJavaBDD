@@ -20,7 +20,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.test.kerja.sqa.sqawebjavabdd.config.AutomationFrameworkConfiguration;
 import com.test.kerja.sqa.sqawebjavabdd.driver.DriverSingleton;
-import com.test.kerja.sqa.sqawebjavabdd.scenariopage.AdminPage;
+import com.test.kerja.sqa.sqawebjavabdd.scenariopage.DashboardPage;
 import com.test.kerja.sqa.sqawebjavabdd.scenariopage.LoginPage;
 import com.test.kerja.sqa.sqawebjavabdd.utils.ConfigurationProperties;
 import com.test.kerja.sqa.sqawebjavabdd.utils.ConstantsParam;
@@ -42,7 +42,7 @@ public class StepDefinition {
 	static ExtentReports extentReports = new ExtentReports();
 	static ExtentSparkReporter htmlreporter = new ExtentSparkReporter("src/test/resources/reporttest_testkerja.html");
 	private static LoginPage loginPage;
-	private static AdminPage adminPage;
+	private static DashboardPage dashboardPage;
 
 //start WEB TEST KERJA---------------------------------------------------------------------------------------------------------------------
 
@@ -55,7 +55,7 @@ public class StepDefinition {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		driver = DriverSingleton.getDriver();
 		loginPage = new LoginPage();
-		adminPage = new AdminPage();
+		dashboardPage = new DashboardPage();
 		extentReports.attachReporter(htmlreporter);
 		ScenarioTestCases[] tests = ScenarioTestCases.values();
 		extentTest = extentReports.createTest(tests[UtilsTest.scenariotestcount].getScenarioTestName());
@@ -64,62 +64,163 @@ public class StepDefinition {
 
 //---------------------------------------------------------------------------------------------------------------------
 
-	@Given("^Go to Main web Login")
+	@Given("^Navigation to : Main Web Login")
 	public void workZero() throws IOException {
 		driver.get(ConstantsParam.URL_MAIN_WEB);
-		if(loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
+			System.out.println("Navigation to : " + ConstantsParam.URL_MAIN_WEB + " pass");
+			System.out.println(loginPage.getTxtLoginHighlight());
+			System.out.println(configurationProperties.getLoginhighlightexpected());
 			extentTest.log(Status.PASS, "Navigation to : " + ConstantsParam.URL_MAIN_WEB);
-		}else{
+			extentTest.pass("Navigation to : " + ConstantsParam.URL_MAIN_WEB,
+					MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+		} else {
+			System.out.println("Navigation to : " + ConstantsParam.URL_MAIN_WEB + " fail");
+			extentTest.log(Status.FAIL, "Navigation to : " + ConstantsParam.URL_MAIN_WEB);
 			extentTest.fail("Navigation to : " + ConstantsParam.URL_MAIN_WEB,
 					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
 		}
-		
+
 	}
 
-	@When("^input user and password to login to web")
-	public void workOne() throws IOException {
-		if (loginPage.getTxtLoginHighlight().contains(configurationProperties.getLoginhighlightexpected())) {
-			loginPage.goToSignin("Admin", "admin123");
-			System.out.println("input user and password to login to web pass");
-			extentTest.log(Status.PASS, "input user and password to login to web");
-
-		} else {
-			System.out.println("input user and password to login to web fail");
-			extentTest.fail("input user and password to login to web",
-					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-
+	@When("^input username (.*) and password (.*) to login to web")
+	public void workOne(String username, String pass) throws IOException {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+		loginPage.goToSignin(username, pass);
+		System.out.println("input "+username+" and "+pass+" to login to web pass");
+		extentTest.log(Status.PASS, "input "+username+" and "+pass+" to login to web pass");
+		extentTest.pass("input "+username+" and "+pass+" to login to web pass",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
 	}
 
 	@Then("^enter dashboard page")
 	public void workTwo() throws IOException {
-		if (loginPage.getTvdashboard().contains(configurationProperties.getDashboardexpectedtext())) {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(configurationProperties.getDashboardproducttext());
+		System.out.println(dashboardPage.getdashboardproducttext());
+
+		if (dashboardPage.getdashboardproducttext().contains(configurationProperties.getDashboardproducttext())) {
 			System.out.println("scenario enter dashboard page pass");
 			extentTest.log(Status.PASS, "enter dashboard page pass");
+			System.out.println("scenario enter dashboard page pass");
+			extentTest.log(Status.PASS, "enter dashboard page pass");
+			extentTest.pass("succesfully enter dashboard page pass",
+					MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
 		} else {
 			System.out.println("scenario enter dashboard page fail");
+			extentTest.log(Status.PASS, "enter dashboard page fail");
 			extentTest.fail("succesfully enter dashboard page fail",
 					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
 		}
 
 	}
 
-	@Given("^Click admin menu")
+	@Given("^In the dashboard page")
 	public void workThree() throws IOException {
-		adminPage.goToAdmin();
-		if(adminPage.getTxtAdmiTabHighlight().contains(configurationProperties.getAdmintabadminmenu())) {
-			System.out.println("scenario Click admin menu pass");
-			extentTest.log(Status.PASS, "Click admin menu");
-		}else{
-			System.out.println("scenario Click admin menu fail");
-			extentTest.fail("Click admin menu",
-					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-		}
+		System.out.println("scenario In the dashboard page pass");
+		extentTest.log(Status.PASS, "In the dashboard page");
+		extentTest.pass("In the dashboard page pass",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+
+	}
+
+	@When("^Click Add to Chart One of Products in Dashboard Product")
+	public void workFour() throws IOException {
+		dashboardPage.selectProducttoBuy(2);
+//		dashboardPage.selectProducttoBuyAll();
+		dashboardPage.selectDinamicProducttoBuyName();
+		System.out.println("Scenario Click Add to Chart One of Products in Dashboard Product pass");
+		extentTest.log(Status.PASS, "Click Add to Chart One of Products in Dashboard Product");
+	}
+	
+	@When("^Click Add to Chart All of Products in Dashboard Product")
+	public void workEleven() throws IOException {
+//		dashboardPage.selectProducttoBuy(2);
+		dashboardPage.selectProducttoBuyAll();
+		dashboardPage.selectDinamicProducttoBuyName();
+		System.out.println("Scenario Click Add to Chart All of Products in Dashboard Product pass");
+		extentTest.log(Status.PASS, "Click Add to Chart All of Products in Dashboard Product");
+	}
+
+	@When("^Click Shopping Cart Icon with Number at The Right Top Corner")
+	public void workFive() throws IOException {
+		dashboardPage.checkMyShopingCart();
+		System.out.println("Scenario Click Shopping Cart Icon with Number at The Right Top Corner pass");
+		extentTest.log(Status.PASS, "Click Shopping Cart Icon with Number at The Right Top Corner");
+		extentTest.pass("Click Shopping Cart Icon with Number at The Right Top Corner pass",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+
+	}
+
+	@When("^Click Checkout Shoping Cart")
+	public void workSix() throws IOException {
+		dashboardPage.btnCheckout();
+		System.out.println("Scenario Click Checkout Shoping Cart pass");
+		extentTest.log(Status.PASS, "Click Checkout Shoping Cart");
+		extentTest.pass("Click Checkout Shoping Cart",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+		
+
+	}
+
+	@When("^Input Form ID to Continue Checkout")
+	public void workSeven() throws IOException {
+		dashboardPage.formCheckout("david", "beackam", "16118");
+		System.out.println("Scenario Input Form ID to Continue Checkout pass");
+		extentTest.log(Status.PASS, "Input Form ID to Continue Checkout");
+		extentTest.pass("Input Form ID to Continue Checkout",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+
+	}
+
+	@When("^Confirm to Finish Checkout")
+	public void workEight() throws IOException {
+		dashboardPage.finishCheckout();
+		System.out.println("Scenario Confirm to Finish Checkout pass");
+		extentTest.log(Status.PASS, "Confirm to Finish Checkout");
+		extentTest.pass("Confirm to Finish Checkout",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+
+	}
+	
+	@Then("^Succesfuly Buy Product")
+	public void workNine() throws IOException {
+		System.out.println("Scenario Succesfuly Buy Product pass");
+		extentTest.log(Status.PASS, "Succesfuly Buy Product");
+		extentTest.pass("Succesfuly Buy Product",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+
+	}
+	@Then("^Back Home Dashboard")
+	public void workTen() throws IOException {
+		dashboardPage.backhomedashboard();
+		System.out.println("Scenario Back Home Dashboard pass");
+		extentTest.log(Status.PASS, "Back Home Dashboard");
+		extentTest.pass("Back Home Dashboard",
+				MediaEntityBuilder.createScreenCaptureFromPath(passcaptureScreen()).build());
+
 	}
 
 	@After
 	public void closeObject() {
+//		driver.close();
+//		driver.quit();
 		extentReports.flush();
 	}
 
@@ -128,6 +229,16 @@ public class StepDefinition {
 		TakesScreenshot screen = (TakesScreenshot) driver;
 		File src = screen.getScreenshotAs(OutputType.FILE);
 		String dest = "C:\\Users\\ACER\\Desktop\\JCCODING\\sqa\\com.test.kerja.sqa.sqawebjavabdd\\src\\test\\resources\\failevidence\\"
+				+ getcurrentdateandtime() + ".png";
+		File target = new File(dest);
+		FileUtils.copyFile(src, target);
+		return dest;
+	}
+	
+	public String passcaptureScreen() throws IOException {
+		TakesScreenshot screen = (TakesScreenshot) driver;
+		File src = screen.getScreenshotAs(OutputType.FILE);
+		String dest = "C:\\Users\\ACER\\Desktop\\JCCODING\\sqa\\com.test.kerja.sqa.sqawebjavabdd\\src\\test\\resources\\passevidence\\"
 				+ getcurrentdateandtime() + ".png";
 		File target = new File(dest);
 		FileUtils.copyFile(src, target);
